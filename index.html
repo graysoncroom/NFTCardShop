@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Card Shop</title>
+
+    <!-- TODO: Replace the following asset with our logo -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/prism.css">
+
+    <!-- main css for template -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- ===============>> Preloader start here <<================= -->
+    <div class="preloader">
+        <img src="assets/images/logo/preloader.png" alt="SuperHero">
+    </div>
+    <!-- ===============>> Preloader end here <<================= -->
+
+
+
+    <!-- ================> header section start here <================== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-xl">
+                <!-- TODO: Replace asset src -->
+                <a class="navbar-brand" href="index.html"><img src="assets/images/logo/logo.png" alt="Anftiland"></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler--icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link" aria-current="page" href="#about">About</a>
+                        <a class="nav-link" href="#roadmap">Roadmap</a>
+                        <a class="nav-link" href="#team">Team</a>
+                        <a class="nav-link" href="#artist">Contract</a>
+                        <a class="nav-link" href="#faq">Faq</a>
+                    </div>
+                    <div class="social-btns">
+                        <ul class="social">
+                            <li class="social__item">
+                                <a href="https://twitter.com/NFTCardShop" class="social__link"><i
+                                        class="fab fa-twitter"></i></a>
+                            </li>
+                            <!-- TODO: Replace with discord invite link -->
+                            <li class="social__item">
+                                <a href="#" class="social__link"><i class="fab fa-discord"></i></a>
+                            </li>
+                            <!-- <li class="social__item">
+                                <a href="#" class="social__link"><i class="fab fa-twitch"></i></a>
+                            </li> -->
+                            <!-- TODO: Replace with instagram link -->
+                            <li class="social__item">
+                                <a href="#" class="social__link"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                        <!-- TODO: Open the vault -->
+                        <a id="vaultBtn" href="#vault" class="default-btn" onclick="vaultButtonClicked()">
+                            <span>MetaMask Connect</span>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+    </header>
+    <!-- ================> header section end here <================== -->
+
+
+
+    <!-- ================> Banner section start here <================== -->
+    <section id="home" class="banner" style="background-image: url(assets/images/banner/banner-bg.jpg);">
+        <div class="container">
+            <div class="banner__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="banner__content" data-aos="fade-right" data-aos-duration="2000">
+                            <h1>Welcome to NFT Card Shop</h1>
+                            <p>The first NFT collection to combine the real world value of physical trading cards
+                                with the security and efficiency of trading NFTs.
+                            </p>
+                            <!-- TODO: Replace href with link to our opensea account -->
+                            <a href="#" class="default-btn">View On Opensea</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="banner__thumb" data-aos="fade-left" data-aos-duration="2000">
+                            <div class="swiper banner__thumb-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/01.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/02.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/03.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/04.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/05.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/06.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="banner__thumb-item">
+                                            <img src="assets/images/nft/07.png" alt="NFT Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================> Banner section end here <================== -->
+
+
+
+    <!-- ================> About section start here <================== -->
+    <section id="about" class="about padding-top padding-bottom">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about__thumb" data-aos="fade-up" data-aos-duration="1500">
+                            <!-- TODO: Replace src -->
+                            <img src="assets/images/about/01.png" alt="About Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about__content" data-aos="fade-up" data-aos-duration="2000">
+                            <h4>About the Collection</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
+                                voluptatibus
+                                officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
+                                adipisicing elitRe.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
+                                voluptatibus
+                                officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
+                                adipisicing elitRe.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
+                                voluptatibus
+                                officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
+                                adipisicing elitRe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================> About section end here <================== -->
+
+
+
+    <!-- ================> Vault section start here <================== -->
+    <section id="vault" class="about padding-top padding-bottom" style="display: none;">
+        <div class="container">
+            <div class="about__wrapper">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-4">
+                        <div class="about__thumb" data-aos="fade-up" data-aos-duration="1500">
+                            <!-- TODO: Replace src -->
+                            <img src="assets/images/about/vault.jpg" alt="About Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="about__content" data-aos="fade-up" data-aos-duration="2000">
+                            <h4>This is the vault</h4>
+                            <p>If you have any Cards, they will appear here. You may request to hold your physical card
+                                if you wish, as the holder of the NFT is the rightful owner of the physical card as
+                                well.</p>
+                            <form id="vault-form" onsubmit="false">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                        placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress2">Apt/Studio/Floor Number</label>
+                                    <input type="text" class="form-control" id="inputAddress2"
+                                        placeholder="Apartment, studio, or floor">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">City</label>
+                                        <input type="text" class="form-control" id="inputCity">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputState">State</label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Alabama</option>
+                                            <option>Alaska</option>
+                                            <option>Arizona</option>
+                                            <option>Arkansas</option>
+                                            <option>California</option>
+                                            <option>Colorado</option>
+                                            <option>Connecticut</option>
+                                            <option>Delaware</option>
+                                            <option>Florida</option>
+                                            <option>Georgia</option>
+                                            <option>Hawaii</option>
+                                            <option>Idaho</option>
+                                            <option>Illinois</option>
+                                            <option>Indiana</option>
+                                            <option>Iowa</option>
+                                            <option>Kansas</option>
+                                            <option>Kentucky</option>
+                                            <option>Louisiana</option>
+                                            <option>Maine</option>
+                                            <option>Maryland</option>
+                                            <option>Massachusetts</option>
+                                            <option>Michigan</option>
+                                            <option>Minnesota</option>
+                                            <option>Mississippi</option>
+                                            <option>Missouri</option>
+                                            <option>Montana</option>
+                                            <option>Nebraska</option>
+                                            <option>Nevada</option>
+                                            <option>New Hampshire</option>
+                                            <option>New Jersey</option>
+                                            <option>New Mexico</option>
+                                            <option>New York</option>
+                                            <option>North Carolina</option>
+                                            <option>North Dakota</option>
+                                            <option>Ohio</option>
+                                            <option>Oklahoma</option>
+                                            <option>Oregon</option>
+                                            <option>Pennsylvania</option>
+                                            <option>Rhode Island</option>
+                                            <option>South Carolina</option>
+                                            <option>South Dakota</option>
+                                            <option>Tennessee</option>
+                                            <option>Texas</option>
+                                            <option>Utah</option>
+                                            <option>Vermont</option>
+                                            <option>Virginia</option>
+                                            <option>Washington</option>
+                                            <option>West Virginia</option>
+                                            <option>Wisconsin</option>
+                                            <option>Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <button type="submit" class="btn btn-primary" onclick="formSubmit()">Request
+                                        Card</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================> Vault section end here <================== -->
+
+
+
+    <!-- ================> Gallery section start here <================== -->
+    <div class="gallery padding-top padding-bottom" style="background-image: url(assets/images/gallery/bg.jpg);"
+        data-aos="fade-up" data-aos-duration="1500">
+        <div class="container">
+            <div class="section-header">
+                <h2>Physical Card Collectibles</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur est, a facere quis architecto
+                    sunt reiciendis accusantium blanditiis ad, quo fuga placeat distinctio maiores voluptas error enim
+                    excepturi esse fugiat?</p>
+            </div>
+            <div class="gallery__wrapper">
+                <div class="swiper gallery__slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/01.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/02.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/03.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/04.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/05.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/06.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery__item">
+                                <img src="assets/images/nft/07.png" alt="NFT Item Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================> Gallery section end here <================== -->
+
+
+
+    <!-- ================> Roadmap section start here <================== -->
+    <section id="roadmap" class="roadmap padding-top padding-bottom">
+        <div class="container">
+            <div class="roadmap__wrapper">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="roadmap__content">
+                            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                                <h2>Growth Roadmap</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
+                                    voluptatibus
+                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
+                                    adipisicing elitRe.</p>
+                            </div>
+                            <div class="roadmap__timeline">
+                                <div class="roadmap__timeline-wrapper">
+                                    <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="500">
+                                        <div class="roadmap__timeline-inner">
+                                            <div class="roadmap__timeline-title">
+                                                <h4>Something 1</h4>
+                                                <p>20%</p>
+                                            </div>
+                                            <div class="roadmap__timeline-text">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de
+                                                    leniti
+                                                    voluptatibus
+                                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat
+                                                    consectetur
+                                                    adipisicing elitRe.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="1000">
+                                        <div class="roadmap__timeline-inner">
+                                            <div class="roadmap__timeline-title">
+                                                <h4>Something 2</h4>
+                                                <p>40%</p>
+                                            </div>
+                                            <div class="roadmap__timeline-text">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de
+                                                    leniti
+                                                    voluptatibus
+                                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat
+                                                    consectetur
+                                                    adipisicing elitRe.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="1200">
+                                        <div class="roadmap__timeline-inner">
+                                            <div class="roadmap__timeline-title">
+                                                <h4>Something 3</h4>
+                                                <p>80%</p>
+                                            </div>
+                                            <div class="roadmap__timeline-text">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de
+                                                    leniti
+                                                    voluptatibus
+                                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat
+                                                    consectetur
+                                                    adipisicing elitRe.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="1500">
+                                        <div class="roadmap__timeline-inner">
+                                            <div class="roadmap__timeline-title">
+                                                <h4>Something 4</h4>
+                                                <p>100%</p>
+                                            </div>
+                                            <div class="roadmap__timeline-text">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de
+                                                    leniti
+                                                    voluptatibus
+                                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat
+                                                    consectetur
+                                                    adipisicing elitRe.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================> Roadmap section end here <================== -->
+
+
+
+    <!-- ================> Team section start here <================== -->
+    <section id="team" class="team padding-top padding-bottom"
+        style="background-image: url(assets/images/team/bg.jpg);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                <h2>Meet The Team</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
+                    voluptatibus
+                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
+                    adipisicing elitRe.</p>
+            </div>
+            <div class="team__wrapper">
+                <div class="row g-4">
+                    <div class="col-lg">
+                        <div class="team__item team__item--bg-1" data-aos="flip-right" data-aos-duration="1000">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <img src="assets/images/team/02.png" alt="team Image">
+                                </div>
+                                <div class="team__content">
+                                    <!-- TODO: Change link to do Something meaningful when they click on the team member -->
+                                    <h4><a href="#">Kyle</a></h4>
+                                    <p>The Collector</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="team__item team__item--bg-4" data-aos="flip-right" data-aos-duration="1200">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <img src="assets/images/team/05.png" alt="team Image">
+                                </div>
+                                <div class="team__content">
+                                    <!-- TODO: Change link to do Something meaningful when they click on the team member -->
+                                    <h4><a href="#">Henrique</a></h4>
+                                    <p>The Glue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="team__item team__item--bg-3" data-aos="flip-right" data-aos-duration="1400">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <img src="assets/images/team/03.png" alt="team Image">
+                                </div>
+                                <div class="team__content">
+                                    <!-- TODO: Change link to do Something meaningful when they click on the team member -->
+                                    <h4><a href="#">Brandon</a></h4>
+                                    <p>The Hype Beast</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="team__item team__item--bg-1" data-aos="flip-right" data-aos-duration="1600">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <img src="assets/images/team/04.png" alt="team Image">
+                                </div>
+                                <div class="team__content">
+                                    <!-- TODO: Change link to do Something meaningful when they click on the team member -->
+                                    <h4><a href="#">Natalia</a></h4>
+                                    <p>The Artist</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="team__item team__item--bg-2" data-aos="flip-right" data-aos-duration="1600">
+                            <div class="team__inner">
+                                <div class="team__thumb">
+                                    <img src="assets/images/team/01.png" alt="team Image">
+                                </div>
+                                <div class="team__content">
+                                    <!-- TODO: Change link to do Something meaningful when they click on the team member -->
+                                    <h4><a href="#">Grayson</a></h4>
+                                    <p>The Dev</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================> Team section end here <================== -->
+
+
+
+    <!-- ================>Contract section start here <================== -->
+    <section id="artist" class="artist padding-top padding-bottom">
+        <div class="container">
+            <div class="artist__wrapper">
+                <div class="row g-5 align-items-center">
+                    <!-- <div class="col-lg-6">
+                        <div class="artist__thumb" data-aos="fade-up" data-aos-duration="1000">
+                            <img src="assets/images/artist/01.png" alt="Artist Image">
+                        </div>
+                    </div> -->
+                    <div class="col-lg-4">
+                        <div class="artist__content" data-aos="fade-up" data-aos-duration="1500">
+                            <h2 class="mb-4">The Contract</h2>
+                            <p>This is our contract.
+                                Built on top of <a href="https://docs.openzeppelin.com/contracts/3.x/erc721">ERC721</a>,
+                                the industry standard for non-fungible tokens. The assets are stored on IPFS, so that
+                                your NFT will remain with you no matter what happens to us.
+                            </p>
+                            <!-- TODO: Change href to link to our contract on EtherScan -->
+                            <a href="#" class="default-btn">
+                                <span>Our Contract on Etherscan</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="artist__content" data-aos="fade-up" data-aos-duration="1500">
+                            <pre style="max-height: 750px"><code class="language-solidity line-numbers">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+
+import "@openzeppelin/contracts@4.5.0/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.5.0/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts@4.5.0/access/Ownable.sol";
+import "@openzeppelin/contracts@4.5.0/utils/Counters.sol";
+
+contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
+    using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
+
+    mapping(uint256 => bool) tokenIsInVault;
+
+    constructor() ERC721("NFTCardShop", "CaSh") {}
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://gateway.pinata.cloud/ipfs/";
+    }
+
+    function safeMint(address to, string memory uri) public onlyOwner {
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(to, tokenId);
+        _setTokenURI(tokenId, uri);
+        tokenIsInVault[tokenId] = true;
+    }
+
+    function _beforeTokenTransfer(
+        address from, 
+        address to, 
+        uint256 tokenId
+    ) internal override(ERC721) {
+        require(tokenIsInVault[tokenId]);
+    }
+
+    // will be used to update the NFT with a "Card Secured In Vault" checkmark
+    function setTokenURI(uint256 tokenId, string memory _tokenURI) public onlyOwner {
+        super._setTokenURI(tokenId, _tokenURI);
+    }
+
+    // The following functions are overrides required by Solidity.
+
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+        super._burn(tokenId);
+    }
+
+    function tokenURI(uint256 tokenId) public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+}                        
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================>Artist section end here <================== -->
+
+
+
+    <!-- ================>Community section start here <================== -->
+    <section class="community padding-top padding-bottom" style="background-image:url(assets/images/community/bg.jpg)">
+        <div class="container">
+            <div class="comminity__wrapper">
+                <div class="community__content text-center" data-aos="zoom-in" data-aos-duration="1000">
+                    <h2>Join NFT Card Shop</h2>
+                    <p>Join a genuine community of traders and collectors!</p>
+                    <!-- TODO: Fix the href to link to the dicord invite link -->
+                    <a href="#" class="default-btn"><span>Join Our Discord</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================>Community section end here <================== -->
+
+
+
+    <!-- ================FAQ section start here <================== -->
+    <section id="faq" class="faq padding-top padding-bottom">
+        <div class="container">
+            <div class="section-header">
+                <h2>Card Shop FAQ</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eligendi quod ipsam dolore tenetur
+                    officia eos ratione illum tempora, odio fugiat, rerum error expedita! Delectus odio consequuntur
+                    placeat a sapiente.</p>
+            </div>
+            <div class="faq__wrapper">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion" id="faqAccordion2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1000">
+                                        <div class="accordion__header" id="faq1">
+                                            <button class="accordion__button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqBody1"
+                                                aria-expanded="false" aria-controls="faqBody1">
+                                                01
+                                                When is the official launch? <span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody1" class="accordion-collapse collapse" aria-labelledby="faq1"
+                                            data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                                                eligendi quod ipsam dolore tenetur
+                                                officia eos ratione illum tempora, odio fugiat, rerum error expedita!
+                                                Delectus odio consequuntur
+                                                placeat a sapiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1100">
+                                        <div class="accordion__header" id="faq2">
+                                            <button class="accordion__button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#faqBody2" aria-expanded="true"
+                                                aria-controls="faqBody2">
+                                                02
+                                                What will the mint price be? <span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody2" class="accordion-collapse collapse show"
+                                            aria-labelledby="faq2" data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                                                eligendi quod ipsam dolore tenetur
+                                                officia eos ratione illum tempora, odio fugiat, rerum error expedita!
+                                                Delectus odio consequuntur
+                                                placeat a sapiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1200">
+                                        <div class="accordion__header" id="faq3">
+                                            <button class="accordion__button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqBody3"
+                                                aria-expanded="false" aria-controls="faqBody3">
+                                                03
+                                                Do I own the physical card?<span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody3" class="accordion-collapse collapse" aria-labelledby="faq3"
+                                            data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Yes, the holder of the NFT is the legal owner of the physical asset
+                                                associated with the card.
+                                                This means that if you want to hold the physical card for yourself, all
+                                                you need to do is Sign
+                                                into MetaMask via the button at the top of the page and request the
+                                                physical card via the form
+                                                you will be brought to.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1300">
+                                        <div class="accordion__header" id="faq4">
+                                            <button class="accordion__button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqBody4"
+                                                aria-expanded="false" aria-controls="faqBody4">
+                                                04
+                                                How do I get a FREE Card?<span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody4" class="accordion-collapse collapse" aria-labelledby="faq4"
+                                            data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                                                eligendi quod ipsam dolore tenetur
+                                                officia eos ratione illum tempora, odio fugiat, rerum error expedita!
+                                                Delectus odio consequuntur
+                                                placeat a sapiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1400">
+                                        <div class="accordion__header" id="faq5">
+                                            <button class="accordion__button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqBody5"
+                                                aria-expanded="false" aria-controls="faqBody5">
+                                                05
+                                                How do I get whitelisted?<span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody5" class="accordion-collapse collapse" aria-labelledby="faq5"
+                                            data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                                                eligendi quod ipsam dolore tenetur
+                                                officia eos ratione illum tempora, odio fugiat, rerum error expedita!
+                                                Delectus odio consequuntur
+                                                placeat a sapiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="accordion__item" data-aos="fade-up" data-aos-duration="1500">
+                                        <div class="accordion__header" id="faq6">
+                                            <button class="accordion__button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqBody6"
+                                                aria-expanded="false" aria-controls="faqBody6">
+                                                06
+                                                How can I use my NFT ?<span class="plus-icon"></span>
+                                            </button>
+                                        </div>
+                                        <div id="faqBody6" class="accordion-collapse collapse" aria-labelledby="faq6"
+                                            data-bs-parent="#faqAccordion2">
+                                            <div class="accordion__body">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                                                eligendi quod ipsam dolore tenetur
+                                                officia eos ratione illum tempora, odio fugiat, rerum error expedita!
+                                                Delectus odio consequuntur
+                                                placeat a sapiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================FAQ section end here <================== -->
+
+
+
+    <!-- ================> Footer section start here <================== -->
+    <footer class="footer">
+        <div class="footer__wrapper padding-top padding-bottom"
+            style="background-image: url(assets/images/footer/bg.png);">
+            <div class="container">
+                <div class="footer__content text-center">
+                    <h3>NFT Card Shop</h3>
+                    <p></p>
+                    <ul class="social justify-content-center">
+                        <li class="social__item">
+                            <a href="#" class="social__link"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="social__item">
+                            <a href="#" class="social__link"><i class="fab fa-discord"></i></a>
+                        </li>
+                        <!-- <li class="social__item">
+                            <a href="#" class="social__link"><i class="fab fa-twitch"></i></a>
+                        </li> -->
+                        <li class="social__item">
+                            <a href="#" class="social__link"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <div class="container">
+                <div class="text-center py-4">
+                    <p class=" mb-0">© 2022 The Card Shop | All Rights Reserved
+                        <a href="#" class="color__theme-color"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ================> Footer section end here <================== -->
+
+    <!-- vendor plugins -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/all.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/prism.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="assets/js/vault.js"></script>
+</body>
+
+</html>
