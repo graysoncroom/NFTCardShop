@@ -23,7 +23,7 @@
 <body>
     <!-- ===============>> Preloader start here <<================= -->
     <div class="preloader">
-        <img src="assets/images/logo/preloader.png" alt="SuperHero">
+        <img src="assets/images/logo/preloader.jpg" alt="Logo">
     </div>
     <!-- ===============>> Preloader end here <<================= -->
 
@@ -34,7 +34,9 @@
         <div class="container">
             <nav class="navbar navbar-expand-xl">
                 <!-- TODO: Replace asset src -->
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo/logo.png" alt="Anftiland"></a>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/images/logo/logo.png" alt="NFT Card Shop">
+                </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -43,11 +45,11 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link" aria-current="page" href="#home">Home</a>
-                        <a class="nav-link" aria-current="page" href="#about">About</a>
-                        <a class="nav-link" href="#roadmap">Roadmap</a>
-                        <a class="nav-link" href="#team">Team</a>
-                        <a class="nav-link" href="#artist">Contract</a>
-                        <a class="nav-link" href="#faq">Faq</a>
+                        <a class="nav-link" aria-current="page" href="#about-nav">About</a>
+                        <a class="nav-link" href="#roadmap-nav">Roadmap</a>
+                        <a class="nav-link" href="#team-nav">Team</a>
+                        <a class="nav-link" href="#artist-nav">Contract</a>
+                        <a class="nav-link" href="#faq-nav">Faq</a>
                     </div>
                     <div class="social-btns">
                         <ul class="social">
@@ -69,7 +71,7 @@
                             </li>
                         </ul>
                         <!-- TODO: Open the vault -->
-                        <a id="vaultBtn" href="#vault" class="default-btn" onclick="vaultButtonClicked()">
+                        <a id="vaultBtn" href="#vault-nav" class="default-btn" onclick="vaultButtonClicked()">
                             <span>MetaMask Connect</span>
                         </a>
                     </div>
@@ -91,9 +93,8 @@
                     <div class="col-lg-6">
                         <div class="banner__content" data-aos="fade-right" data-aos-duration="2000">
                             <h1>Welcome to NFT Card Shop</h1>
-                            <p>The first NFT collection to combine the real world value of physical trading cards
-                                with the security and efficiency of trading NFTs.
-                            </p>
+                            <p>A first-of-its-kind virtual trading card experience. Allowing you to trade securely, and
+                                enjoy hassle-free nostalgia.</p>
                             <!-- TODO: Replace href with link to our opensea account -->
                             <a href="#" class="default-btn">View On Opensea</a>
                         </div>
@@ -144,6 +145,7 @@
                 </div>
             </div>
         </div>
+        <span id="about-nav"></span>
     </section>
     <!-- ================> Banner section end here <================== -->
 
@@ -163,20 +165,27 @@
                     <div class="col-lg-6">
                         <div class="about__content" data-aos="fade-up" data-aos-duration="2000">
                             <h4>About the Collection</h4>
-                            <p>NFT Card shop is a new and unique concept ready to disrupt the collectable trading card
-                                world forever. Our platform and backend contract ties your ownership of the virtual NFT
-                                card to a physical graded card. Having your NFT linked to physical asset opens doors to
-                                numerous benefits. Your NFT’S value will be backed by a physical asset which gives
-                                security in this highly volatile market. Within our secure vault we store all of the
-                                physical cards which can be sent upon request. By leaving your physical card in our
-                                vault your investment remains insured and you no longer have the liability of storing
-                                the physical asset. Our vault system also allows for quick transfer of ownership and
-                                provides confidence in the authenticity of your purchase. </p>
+                            <p>Have you ever wanted to relive the trading card experience, but feel you lack the time
+                                and effort to physically collect the cards? Worried that you could lose your most
+                                valuable
+                                collectibles, or risk trading into fakes?
+                                We get it, and that’s why we created the NFT card shop, to make trading easier and
+                                hassle-free for the end user. We’re a digital trading card outlet that ties virtual our
+                                original
+                                trading card NFTs
+                                to physical graded cards of the same design. It’s all done using a complex smart
+                                contract, with
+                                the value of the digital cards directly linked to a physical card that we store securely
+                                on your behalf.
+                                This means that when you trade, you don’t have to think about logistics or authenticity
+                                - because we’ve got it covered. All the fun, none of the fuss.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <span id="vault-nav"></span>
+        <span id="gallery-nav-vaultclosed"></span>
     </section>
     <!-- ================> About section end here <================== -->
 
@@ -195,7 +204,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="about__content" data-aos="fade-up" data-aos-duration="2000">
-                            <h4>This is the vault</h4>
+                            <h4>The Vault</h4>
                             <p>If you have any Cards, they will appear here. You may request to hold your physical card
                                 if you wish, as the holder of the NFT is the rightful owner of the physical card as
                                 well.</p>
@@ -293,19 +302,20 @@
                 </div>
             </div>
         </div>
+        <span id="gallery-nav-vaultopen"></span>
     </section>
     <!-- ================> Vault section end here <================== -->
 
 
 
     <!-- ================> Gallery section start here <================== -->
-    <section class="gallery padding-top padding-bottom" style="background-image: url(assets/images/gallery/bg.jpg);"
-        data-aos="fade-up" data-aos-duration="1500">
+    <section id="gallery" class="gallery padding-top padding-bottom"
+        style="background-image: url(assets/images/gallery/bg.jpg);" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
             <div class="section-header">
                 <h2>Physical Card Collectibles</h2>
-                <p>Our eye-catching designs are a refreshing update in the collectible card market.
-                </p>
+                <p>A lot of thought has gone into the cards that we’ll be delivering. Each of our original designs
+                    offer a classic feel, but also bring a refreshing boost to the trading card market.</p>
             </div>
             <div class="gallery__wrapper">
                 <div class="swiper gallery__slider">
@@ -350,6 +360,7 @@
                 </div>
             </div>
         </div>
+        <span id="roadmap-nav"></span>
     </section>
     <!-- ================> Gallery section end here <================== -->
 
@@ -364,44 +375,63 @@
                         <div class="roadmap__content">
                             <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
                                 <h2>Growth Roadmap</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vo luptas de leniti
-                                    voluptatibus
-                                    officia! Ipsum porro repellendu quis fuga illooxe in officia wiat consectetur
-                                    adipisicing elitRe.</p>
+                                <p>In order to display how serious we are about the growth of our project, we’ve put
+                                    together a
+                                    roadmap that outlines our plans.</p>
                             </div>
                             <div class="roadmap__timeline">
                                 <div class="roadmap__timeline-wrapper">
                                     <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="500">
                                         <div class="roadmap__timeline-inner">
                                             <div class="roadmap__timeline-title">
-                                                <h4>Collect and Grade.</h4>
+                                                <h4>Collect and Grade</h4>
                                                 <p>20%</p>
                                             </div>
                                             <div class="roadmap__timeline-text">
-                                                <p>Acquire and grade highly sought after and rare sports memorabilia.
+                                                <p>We’ll get our hands on a wide variety of high-value sports
+                                                    collectibles and memorabilia, which
+                                                    will make up the physical side of our collection.
                                                 </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="700">
+                                        <div class="roadmap__timeline-inner">
+                                            <div class="roadmap__timeline-title">
+                                                <h4>Authenticate</h4>
+                                                <p>40%</p>
+                                            </div>
+                                            <div class="roadmap__timeline-text">
+                                                <p>We’ll have each of our new assets individually graded by
+                                                    professionals, to ensure authenticity
+                                                    and quality across the collection.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="1000">
                                         <div class="roadmap__timeline-inner">
                                             <div class="roadmap__timeline-title">
-                                                <h4>Design digital assets.</h4>
-                                                <p>40%</p>
+                                                <h4>Digital Design</h4>
+                                                <p>60%</p>
                                             </div>
                                             <div class="roadmap__timeline-text">
-                                                <p>Create and design unique NFT artwork for each graded item.</p>
+                                                <p>We’ll create a unique NFT to digitally represent each item in our
+                                                    collection, which we’ll release
+                                                    as NFTs.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="roadmap__timeline-item" data-aos="fade-up" data-aos-duration="1200">
                                         <div class="roadmap__timeline-inner">
                                             <div class="roadmap__timeline-title">
-                                                <h4>Announcement.</h4>
+                                                <h4>Prepare for Release</h4>
                                                 <p>80%</p>
                                             </div>
                                             <div class="roadmap__timeline-text">
-                                                <p>Drop date announcement and event.</p>
+                                                <p>We’ll announce the date of our launch, allowing our community to
+                                                    prepare the big day. Potential
+                                                    minters will be able to see what we’re going to offer with sneak
+                                                    peeks of our designs.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -412,7 +442,8 @@
                                                 <p>100%</p>
                                             </div>
                                             <div class="roadmap__timeline-text">
-                                                <p>Release the first round of NFTs.</p>
+                                                <p>We’ll launch the first wave of our collection, consisting of X
+                                                    digital assets. Will you be collecting?</p>
                                             </div>
                                         </div>
                                     </div>
@@ -424,6 +455,7 @@
                 </div>
             </div>
         </div>
+        <span id="team-nav"></span>
     </section>
     <!-- ================> Roadmap section end here <================== -->
 
@@ -435,7 +467,8 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
                 <h2>Meet The Team</h2>
-                <p>Our group is passionate about our mission and committed to always improving our platform.
+                <p>We have a great team supporting our launch, bringing together a variety of skills to create a
+                    strong foundation.
                 </p>
             </div>
             <div class="team__wrapper">
@@ -513,6 +546,7 @@
                 </div>
             </div>
         </div>
+        <span id="artist-nav"></span>
     </section>
     <!-- ================> Team section end here <================== -->
 
@@ -520,6 +554,7 @@
 
     <!-- ================>Contract section start here <================== -->
     <section id="artist" class="artist padding-top padding-bottom">
+        <!-- NOTE: IDs and Classes named artist for legacy reasons -->
         <div class="container">
             <div class="artist__wrapper">
                 <div class="row g-5 align-items-center">
@@ -547,7 +582,7 @@
                     <div class="col-lg-8">
                         <div class="artist__content" data-aos="fade-up" data-aos-duration="1500">
                             <pre style="max-height: 750px"><code class="language-solidity line-numbers">// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts@4.5.0/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts@4.5.0/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -559,7 +594,13 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    mapping(uint256 => bool) tokenIsInVault;
+    // tokenId => token is in vault, verified, and graded
+    mapping(uint256 => bool) public tokenIsInVaultAndGraded;
+
+    // tokenId => last token transfer date as seconds since unix epoch
+    mapping(uint256 => uint256) public lastTokenTransferDate;
+
+    bool public cardShopRetainsTransferControl = true;
 
     constructor() ERC721("NFTCardShop", "CaSh") {}
 
@@ -572,7 +613,7 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
-        tokenIsInVault[tokenId] = true;
+        tokenIsInVaultAndGraded[tokenId] = true;
     }
 
     function _beforeTokenTransfer(
@@ -580,7 +621,38 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
         address to, 
         uint256 tokenId
     ) internal override(ERC721) {
-        require(tokenIsInVault[tokenId]);
+        require(tokenIsInVaultAndGraded[tokenId] || !cardShopRetainsTransferControl);
+    }
+
+    // true => request made
+    // false => request not made
+    function cardSentBackToVault(uint256 tokenId) public returns(bool) {
+        require(!tokenIsInVaultAndGraded[tokenId], "NFTCardShop: No need to request unlock. Cards that are in the vault can be transferred at will.");
+
+        if (lastTokenTransferDate[tokenId] == 0) {
+            lastTokenTransferDate[tokenId] = block.timestamp;
+            return false;
+        } else if ((lastTokenTransferDate[tokenId] + 40 days) >= block.timestamp) {
+            tokenIsInVaultAndGraded[tokenId] = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    function cardRemovedFromVault(uint256 tokenId) public onlyOwner {
+        require(tokenIsInVaultAndGraded[tokenId], "NFTCardShop: Card cannot be removed from the vault unless it is currently in the vault.");
+        tokenIsInVaultAndGraded[tokenId] = false;
+    }
+
+    function cardReturnedFromVault(uint256 tokenId) public onlyOwner {
+        require(!tokenIsInVaultAndGraded[tokenId], "NFTCardShop: Card cannot be returned to the vault if it is already in the vault.");
+        lastTokenTransferDate[tokenId] = 0;
+        tokenIsInVaultAndGraded[tokenId] = true;
+    }
+
+    function toggleTransferControl() public onlyOwner {
+        cardShopRetainsTransferControl = !cardShopRetainsTransferControl;
     }
 
     // will be used to update the NFT with a "Card Secured In Vault" checkmark
@@ -588,20 +660,14 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
         super._setTokenURI(tokenId, _tokenURI);
     }
 
-    // The following functions are overrides required by Solidity.
-
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId) public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
+    function tokenURI(uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
-}                        
+}                                                       
                             </code></pre>
                         </div>
                     </div>
@@ -619,12 +685,15 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
             <div class="comminity__wrapper">
                 <div class="community__content text-center" data-aos="zoom-in" data-aos-duration="1000">
                     <h2>Join NFT Card Shop</h2>
-                    <p>Join a genuine community of traders and collectors!</p>
+                    <p>Do you want to be a part of something great? Would you like to claim your slice of the
+                        future of digital trading cards? Becoming a part of our community is as simple as joining our
+                        Discord, and getting involved in the conversation.</p>
                     <!-- TODO: Fix the href to link to the dicord invite link -->
                     <a href="#" class="default-btn"><span>Join Our Discord</span></a>
                 </div>
             </div>
         </div>
+        <span id="faq-nav"></span>
     </section>
     <!-- ================>Community section end here <================== -->
 
@@ -635,9 +704,9 @@ contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
         <div class="container">
             <div class="section-header">
                 <h2>Card Shop FAQ</h2>
-                <p>We believe the trading card world needed an update and usability in the ever-growing web3 universe.
-                    We are committed to having a very transparent and customer centered relationship with all our
-                    clients.</p>
+                <p> Our project is what the trading card space needs to thrive, but we appreciate that you might
+                    have some questions. Our team is committed to having a transparent relationship with the community.
+                    Hopefully we can answer most of these questions right here.
             </div>
             <div class="faq__wrapper">
                 <div class="row justify-content-center">
