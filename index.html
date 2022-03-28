@@ -599,17 +599,20 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant VAULT_MANAGER_ROLE = keccak256("VAULT_MANAGER_ROLE");
     bytes32 public constant TOKEN_URI_UPDATE_ROLE = keccak256("TOKEN_URI_UPDATE_ROLE");
-    uint256 public constant MAXIMUM_TOKEN_TRANSFER_UNLOCK_REQUEST_WAITING_PERIOD = 40 days;
-    
+
     Counters.Counter private _tokenIdCounter;
+
     uint256 public tokenTransferUnlockRequestWaitPeriod;
 
-    event TokenTransferUnlockRequest(uint256 tokenId, uint256 );
+    uint256 public constant MAXIMUM_TOKEN_TRANSFER_UNLOCK_REQUEST_WAITING_PERIOD = 40 days;
+
+    event TokenTransferUnlockRequest(uint256 tokenId, uint256 tokenTransferUnlockRequestDate);
 
     // tokenId => token is in vault, verified, and graded
     mapping(uint256 => bool) public tokenIsInVaultAndGraded;
+
     // tokenId => last token transfer date as seconds since unix epoch
-    mapping(uint256 => uint256) public tokenTransferUnlockRequstDate;
+    mapping(uint256 => uint256) public tokenIdToTokenTransferUnlockRequestDate;
 
     bool public cardShopRetainsTransferControl;
 
@@ -632,7 +635,7 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
         tokenIsInVaultAndGraded[tokenId] = true;
-        assert(tokenTransferUnlockRequstDate[tokenId] == 0);
+        assert(tokenIdToTokenTransferUnlockRequestDate[tokenId] == 0);
     }
 
     function _beforeTokenTransfer(
@@ -645,23 +648,13 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
 
     // true => token was transfer unlocked
     // false => token was not transfer unlocked
-    // NOTE: The idea here is that we are giving the vault an amount of time to
-    // recieve, verify, and grade a card coming back into the vault. However,
-    // in the event that the vault stops operating for any reason, we want to provide
-    // a mechanism by which holders of an NFT from this collection will still be able to
-    // trade. This amount of time is defined by the contract member variable `transferTokenUnlockRequestWaitPeriod`.
-    // If the vault has stopped operating, then it will not call the `removeTokenTransferUnlockRequest(uint256 tokenId)` function.
-    // As such, after that amount of time has passed, the card (aka token, NFT) holder will be able to call this function again
-    // which will allow the holder to conduct transactions as if the card was in the vault.
-    // NOTE 2: We do this to protect the collection from even us and give the community the ability to adapt to
-    // a situation where the vault is no longer operational. This mechanism makes our collection future-proof.
     function attemptTokenTransferUnlock(uint256 tokenId) public returns(bool) {
         require(!tokenIsInVaultAndGraded[tokenId], "NFTCardShop: No need to request unlock. Cards that are in the vault can be transferred at will.");
-        if (tokenTransferUnlockRequstDate[tokenId] == 0) {
-            tokenTransferUnlockRequstDate[tokenId] = block.timestamp;
-            emit TokenTransferUnlockRequest(tokenId, tokenTransferUnlockRequstDate[tokenId]);
+        if (tokenIdToTokenTransferUnlockRequestDate[tokenId] == 0) {
+            tokenIdToTokenTransferUnlockRequestDate[tokenId] = block.timestamp;
+            emit TokenTransferUnlockRequest(tokenId, tokenIdToTokenTransferUnlockRequestDate[tokenId]);
             return false;
-        } else if ((tokenTransferUnlockRequstDate[tokenId] + tokenTransferUnlockRequestWaitPeriod) >= block.timestamp) {
+        } else if ((tokenIdToTokenTransferUnlockRequestDate[tokenId] + tokenTransferUnlockRequestWaitPeriod) >= block.timestamp) {
             tokenIsInVaultAndGraded[tokenId] = true;
             return true;
         }
@@ -680,12 +673,9 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
     }
 
     function removeTokenTransferUnlockRequest(uint256 tokenId) public onlyRole(VAULT_MANAGER_ROLE) {
-        tokenTransferUnlockRequstDate[tokenId] = 0;
+        tokenIdToTokenTransferUnlockRequestDate[tokenId] = 0;
     }
 
-    // TODO: Implement a voting mechanism for our Token holders.
-    // This will allow the community to decide whether or not they
-    // want the trading security services of the vault
     function toggleTransferControl() public onlyRole(DEFAULT_ADMIN_ROLE) {
         cardShopRetainsTransferControl = !cardShopRetainsTransferControl;
     }
@@ -695,7 +685,6 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
         tokenTransferUnlockRequestWaitPeriod = amountOfTime;
     }
 
-    // will be used to update the NFT with a "Card Secured In Vault" checkmark
     function setTokenURI(uint256 tokenId, string memory _tokenURI) public onlyRole(TOKEN_URI_UPDATE_ROLE) {
         super._setTokenURI(tokenId, _tokenURI);
     }
@@ -713,7 +702,7 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
     function supportsInterface(bytes4 interfaceId) public view override(ERC721, AccessControl) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
-}                                                       
+}                                                                          
                             </code></pre>
                         </div>
                     </div>
