@@ -576,15 +576,11 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts@4.5.0/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts@4.5.0/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts@4.5.0/utils/Counters.sol";
 
-contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
+contract NFTCardShop is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
-
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-    bytes32 public constant VAULT_MANAGER_ROLE = keccak256("VAULT_MANAGER_ROLE");
-    bytes32 public constant TOKEN_URI_UPDATE_ROLE = keccak256("TOKEN_URI_UPDATE_ROLE");
 
     Counters.Counter private _tokenIdCounter;
 
@@ -603,10 +599,6 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
     bool public cardShopRetainsTransferControl;
 
     constructor() ERC721("NFTCardShop", "CaSh") {
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _grantRole(MINTER_ROLE, msg.sender);
-        _grantRole(VAULT_MANAGER_ROLE, msg.sender);
-        _grantRole(TOKEN_URI_UPDATE_ROLE, msg.sender);
         cardShopRetainsTransferControl = true;
         tokenTransferUnlockRequestWaitPeriod = MAXIMUM_TOKEN_TRANSFER_UNLOCK_REQUEST_WAITING_PERIOD;
     }
@@ -615,7 +607,7 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
         return "https://gateway.pinata.cloud/ipfs/";
     }
 
-    function safeMint(address to, string memory uri) public onlyRole(MINTER_ROLE) {
+    function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
@@ -634,6 +626,16 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
 
     // true => token was transfer unlocked
     // false => token was not transfer unlocked
+    // NOTE: The idea here is that we are giving the vault an amount of time to
+    // recieve, verify, and grade a card coming back into the vault. However,
+    // in the event that the vault stops operating for any reason, we want to provide
+    // a mechanism by which holders of an NFT from this collection will still be able to
+    // trade. This amount of time is defined by the contract member variable `transferTokenUnlockRequestWaitPeriod`.
+    // If the vault has stopped operating, then it will not call the `removeTokenTransferUnlockRequest(uint256 tokenId)` function.
+    // As such, after that amount of time has passed, the card (aka token, NFT) holder will be able to call this function again
+    // which will allow the holder to conduct transactions as if the card was in the vault.
+    // NOTE 2: We do this to protect the collection from even us and give the community the ability to adapt to
+    // a situation where the vault is no longer operational. This mechanism makes our collection future-proof.
     function attemptTokenTransferUnlock(uint256 tokenId) public returns(bool) {
         require(!tokenIsInVaultAndGraded[tokenId], "NFTCardShop: No need to request unlock. Cards that are in the vault can be transferred at will.");
         if (tokenIdToTokenTransferUnlockRequestDate[tokenId] == 0) {
@@ -647,31 +649,39 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
         return false;
     }
 
-    function cardRemovedFromVault(uint256 tokenId) public onlyRole(VAULT_MANAGER_ROLE) {
+    function cardRemovedFromVault(uint256 tokenId) public onlyOwner {
         require(tokenIsInVaultAndGraded[tokenId], "NFTCardShop: Card cannot be removed from the vault unless it is currently in the vault.");
         tokenIsInVaultAndGraded[tokenId] = false;
+        // remove vault checkmark (using setTokenURI)
+        setTokenURI(tokenID, /* URI without checkmark */);
     }
 
-    function cardReturnedToVault(uint256 tokenId) public onlyRole(VAULT_MANAGER_ROLE) {
+    function cardReturnedToVault(uint256 tokenId) public onlyOwner {
         require(!tokenIsInVaultAndGraded[tokenId], "NFTCardShop: Card cannot be returned to the vault if it is already in the vault.");
         removeTokenTransferUnlockRequest(tokenId);
         tokenIsInVaultAndGraded[tokenId] = true;
+        // add vault checkmark to NFT (using setTokenURI)
+        setTokenURI(tokenID, /* URI with checkmark */);
     }
 
-    function removeTokenTransferUnlockRequest(uint256 tokenId) public onlyRole(VAULT_MANAGER_ROLE) {
+    function removeTokenTransferUnlockRequest(uint256 tokenId) public onlyOwner {
         tokenIdToTokenTransferUnlockRequestDate[tokenId] = 0;
     }
 
+    // TODO: Implement a voting mechanism for our Token holders.
+    // This will allow the community to decide whether or not they
+    // want the trading security services of the vault
     function toggleTransferControl() public onlyRole(DEFAULT_ADMIN_ROLE) {
         cardShopRetainsTransferControl = !cardShopRetainsTransferControl;
     }
 
-    function setTokenTransferUnlockRequestWaitPeriod(uint256 amountOfTime) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function setTokenTransferUnlockRequestWaitPeriod(uint256 amountOfTime) onlyOwner {
         require(amountOfTime <= MAXIMUM_TOKEN_TRANSFER_UNLOCK_REQUEST_WAITING_PERIOD);
         tokenTransferUnlockRequestWaitPeriod = amountOfTime;
     }
 
-    function setTokenURI(uint256 tokenId, string memory _tokenURI) public onlyRole(TOKEN_URI_UPDATE_ROLE) {
+    // will be used to update the NFT with a "Card Secured In Vault" checkmark
+    function setTokenURI(uint256 tokenId, string memory _tokenURI) private onlyOwner {
         super._setTokenURI(tokenId, _tokenURI);
     }
 
@@ -688,7 +698,8 @@ contract NFTCardShop is ERC721, ERC721URIStorage, AccessControl {
     function supportsInterface(bytes4 interfaceId) public view override(ERC721, AccessControl) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
-}                                                                          
+}
+                                                                                                          
                             </code></pre>
                         </div>
                     </div>
