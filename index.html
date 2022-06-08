@@ -574,12 +574,12 @@
                             <pre style="max-height: 750px"><code class="language-solidity line-numbers">// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "@openzeppelin/contracts@4.5.0/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts@4.5.0/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/ownership/Ownable.sol";
-import "@openzeppelin/contracts@4.5.0/utils/Counters.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract NFTCardShop is ERC721URIStorage, Ownable {
+contract NFTCardShop is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -653,7 +653,7 @@ contract NFTCardShop is ERC721URIStorage, Ownable {
         require(tokenIsInVaultAndGraded[tokenId], "NFTCardShop: Card cannot be removed from the vault unless it is currently in the vault.");
         tokenIsInVaultAndGraded[tokenId] = false;
         // remove vault checkmark (using setTokenURI)
-        setTokenURI(tokenID, /* URI without checkmark */);
+        //setTokenURI(tokenId, /* URI without checkmark */);
     }
 
     function cardReturnedToVault(uint256 tokenId) public onlyOwner {
@@ -661,7 +661,7 @@ contract NFTCardShop is ERC721URIStorage, Ownable {
         removeTokenTransferUnlockRequest(tokenId);
         tokenIsInVaultAndGraded[tokenId] = true;
         // add vault checkmark to NFT (using setTokenURI)
-        setTokenURI(tokenID, /* URI with checkmark */);
+        //setTokenURI(tokenId, /* URI with checkmark */);
     }
 
     function removeTokenTransferUnlockRequest(uint256 tokenId) public onlyOwner {
@@ -671,11 +671,11 @@ contract NFTCardShop is ERC721URIStorage, Ownable {
     // TODO: Implement a voting mechanism for our Token holders.
     // This will allow the community to decide whether or not they
     // want the trading security services of the vault
-    function toggleTransferControl() public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function toggleTransferControl() public onlyOwner {
         cardShopRetainsTransferControl = !cardShopRetainsTransferControl;
     }
 
-    function setTokenTransferUnlockRequestWaitPeriod(uint256 amountOfTime) onlyOwner {
+    function setTokenTransferUnlockRequestWaitPeriod(uint256 amountOfTime) public onlyOwner {
         require(amountOfTime <= MAXIMUM_TOKEN_TRANSFER_UNLOCK_REQUEST_WAITING_PERIOD);
         tokenTransferUnlockRequestWaitPeriod = amountOfTime;
     }
@@ -694,12 +694,7 @@ contract NFTCardShop is ERC721URIStorage, Ownable {
     function tokenURI(uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
-
-    function supportsInterface(bytes4 interfaceId) public view override(ERC721, AccessControl) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
-}
-                                                                                                          
+}                                                                                                       
                             </code></pre>
                         </div>
                     </div>
